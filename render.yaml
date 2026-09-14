@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: msd-fixed
+    runtime: python
+    buildCommand: ""
+    startCommand: python server.py
+    envVars:
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: SECRET_KEY
+        generateValue: true

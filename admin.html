@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en" class="dark">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MSD ADMIN // CONTROL PANEL</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>tailwind.config={darkMode:'class',theme:{extend:{colors:{cyber:{bg:'#050811',cyan:'#00e5ff',green:'#00ff88',pink:'#ff007f',gold:'#ffd700'}}}}}</script>
+<style>
+body{background:radial-gradient(circle at 50% -10%,rgba(0,229,255,.12),transparent 55%),#050811;color:#f8fafc;font-family:system-ui,sans-serif;min-height:100vh}
+.glass{background:rgba(10,18,30,.82);backdrop-filter:blur(22px);border:1px solid rgba(0,229,255,.18);box-shadow:0 18px 50px rgba(0,0,0,.4);border-radius:20px}
+input,select,textarea{background:#070d16!important;border:1px solid rgba(255,255,255,.12)!important;color:#fff!important;border-radius:12px;padding:.7rem .8rem;width:100%;outline:none}input:focus,select:focus,textarea:focus{border-color:#00e5ff!important;box-shadow:0 0 0 2px rgba(0,229,255,.08)}
+.btn{border-radius:12px;padding:.65rem .9rem;font-weight:800;transition:.2s}.btn:hover{transform:translateY(-1px)}.primary{background:#00e5ff;color:#031018}.green{background:#00ff88;color:#03150d}.danger{background:rgba(255,0,127,.16);border:1px solid rgba(255,0,127,.4);color:#ff75b7}.muted{color:#94a3b8}.tag{padding:.22rem .55rem;border-radius:999px;font-size:.72rem;font-weight:800}.active{background:rgba(0,255,136,.12);color:#00ff88;border:1px solid rgba(0,255,136,.3)}.disabled{background:rgba(255,0,127,.12);color:#ff75b7;border:1px solid rgba(255,0,127,.3)}
+.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse}th,td{padding:.7rem;text-align:left;border-bottom:1px solid rgba(255,255,255,.07);white-space:nowrap}th{color:#67e8f9;font-size:.75rem;text-transform:uppercase}
+</style>
+</head>
+<body>
+<div id="login" class="min-h-screen flex items-center justify-center p-5"><div class="glass w-full max-w-sm p-6">
+  <div class="text-center mb-6"><div class="text-cyan-300 font-black tracking-[.2em] text-xs">MSD ADMIN</div><h1 class="text-2xl font-black mt-2">CONTROL PANEL</h1><p class="muted text-xs mt-2">Server-side access required</p></div>
+  <form id="loginForm" class="space-y-3"><input id="password" type="password" placeholder="Admin password" autocomplete="current-password"><button class="btn primary w-full">LOGIN</button><div id="loginMsg" class="text-xs text-rose-300"></div></form>
+</div></div>
+
+<div id="app" class="hidden max-w-7xl mx-auto p-4 md:p-7">
+<header class="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-6"><div><div class="text-cyan-300 text-xs font-black tracking-[.22em]">MSD ADMIN // LIVE</div><h1 class="text-3xl font-black mt-1">Control Center</h1><p class="muted text-sm">UIDs, VIP keys, broadcast and client settings</p></div><button id="logout" class="btn danger">Logout</button></header>
+<div id="toast" class="hidden fixed top-4 right-4 z-50 glass px-4 py-3 text-sm"></div>
+
+<section class="grid md:grid-cols-4 gap-3 mb-5"><div class="glass p-4"><div class="muted text-xs">UIDS</div><div id="statUsers" class="text-2xl font-black mt-1">0</div></div><div class="glass p-4"><div class="muted text-xs">VIP KEYS</div><div id="statKeys" class="text-2xl font-black mt-1">0</div></div><div class="glass p-4"><div class="muted text-xs">ACTIVE UIDS</div><div id="statActive" class="text-2xl font-black mt-1 text-emerald-300">0</div></div><div class="glass p-4"><div class="muted text-xs">MIN RECHARGE</div><div id="statRecharge" class="text-2xl font-black mt-1 text-cyan-300">₹300</div></div></section>
+
+<section class="glass p-4 md:p-6 mb-5"><div class="flex items-center justify-between mb-4"><h2 class="font-black text-lg">App Settings</h2><button id="saveSettings" class="btn primary">Save Settings</button></div><div class="grid md:grid-cols-2 gap-3">
+<label class="text-xs muted">App Name<input id="appName"></label><label class="text-xs muted">Logo URL<input id="logoUrl" placeholder="https://..."></label>
+<label class="text-xs muted">Register URL<input id="registerUrl"></label><label class="text-xs muted">Recharge URL<input id="rechargeUrl"></label>
+<label class="text-xs muted">Referral Code<input id="referralCode"></label><label class="text-xs muted">Telegram Support URL<input id="telegramSupport"></label>
+<label class="text-xs muted">Telegram Username<input id="telegramUsername"></label><label class="text-xs muted">Minimum Recharge<input id="minRecharge" type="number" min="0" step="1"></label>
+<label class="text-xs muted">Preview Loss Count (0–4)<select id="previewLossCount"><option value="0">0 — 100% preview wins</option><option value="1">1 — 90%</option><option value="2">2 — 80%</option><option value="3">3 — 70%</option><option value="4">4 — 60%</option></select></label>
+<label class="text-xs muted md:col-span-1">Broadcast Message<input id="broadcastMessage" placeholder="Leave empty to hide"></label>
+</div></section>
+
+<section class="grid lg:grid-cols-2 gap-5 mb-5"><div class="glass p-4 md:p-6"><h2 class="font-black text-lg mb-4">Add / Update UID</h2><form id="uidForm" class="grid md:grid-cols-2 gap-3"><input type="hidden" id="uidMode" value="add"><label class="text-xs muted">Game UID<input id="uid" required></label><label class="text-xs muted">Plan<input id="uidPlan" value="VIP"></label><label class="text-xs muted">Expiry<input id="uidExpiry" type="datetime-local"></label><label class="text-xs muted">Today Recharge<input id="uidRecharge" type="number" min="0" step="1" value="0"></label><label class="text-xs muted">HWID (optional)<input id="uidHwid"></label><label class="text-xs muted">Notes<input id="uidNotes"></label><label class="flex items-center gap-2 text-sm md:col-span-2"><input id="uidActive" type="checkbox" checked style="width:auto"> Active</label><div class="md:col-span-2 flex gap-2"><button class="btn green">Save UID</button><button type="button" id="uidClear" class="btn border border-white/10">Clear</button></div></form></div>
+<div class="glass p-4 md:p-6"><h2 class="font-black text-lg mb-4">Add / Update VIP Key</h2><form id="keyForm" class="grid md:grid-cols-2 gap-3"><input type="hidden" id="keyMode" value="add"><label class="text-xs muted">VIP Key<input id="key" required placeholder="MSD-XXXX-XXXX"></label><label class="text-xs muted">UID label<input id="keyUid" value="KEY"></label><label class="text-xs muted">Plan<input id="keyPlan" value="VIP KEY"></label><label class="text-xs muted">Expiry<input id="keyExpiry" type="datetime-local"></label><label class="text-xs muted">HWID (optional)<input id="keyHwid"></label><label class="flex items-center gap-2 text-sm md:col-span-2"><input id="keyActive" type="checkbox" checked style="width:auto"> Active</label><div class="md:col-span-2 flex gap-2"><button class="btn green">Save Key</button><button type="button" id="keyClear" class="btn border border-white/10">Clear</button></div></form></div></section>
+
+<section class="glass p-4 md:p-6 mb-5"><div class="flex items-center justify-between mb-3"><h2 class="font-black text-lg">UID Management</h2><button id="refresh" class="btn border border-cyan-400/20">Refresh</button></div><div class="table-wrap"><table><thead><tr><th>UID</th><th>Plan</th><th>Recharge</th><th>Expiry</th><th>Status</th><th>HWID</th><th>Actions</th></tr></thead><tbody id="usersTable"></tbody></table></div></section>
+<section class="glass p-4 md:p-6"><h2 class="font-black text-lg mb-3">VIP Key Management</h2><div class="table-wrap"><table><thead><tr><th>Key</th><th>Plan</th><th>Expiry</th><th>Status</th><th>HWID</th><th>Actions</th></tr></thead><tbody id="keysTable"></tbody></table></div></section>
+</div>
+<script src="js/admin.js?v=1.0"></script>
+</body></html>
