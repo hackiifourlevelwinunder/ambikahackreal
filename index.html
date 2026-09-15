@@ -8,8 +8,8 @@
     <base href="/">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="logo.png">
-    <link rel="apple-touch-icon" href="logo.png">
+    <link rel="icon" type="image/png" href="/assets/logo.png">
+    <link rel="apple-touch-icon" href="/assets/logo.png">
 
     <!-- SEO -->
     <title>AMBIKA HACK // INTELLIGENT PREDICTION CONSOLE</title>
@@ -99,7 +99,7 @@
 
     <!-- FLOATING DRAGGABLE BUBBLE LOGO (Appears when minimized in game) -->
     <div id="floatingLogoBubble" class="fixed z-[9999999] w-12 h-12 rounded-2xl overflow-hidden shadow-[0_0_25px_rgba(0,240,255,0.75)] cursor-grab active:cursor-grabbing bg-[#06090f] p-1 flex items-center justify-center transition-transform hover:scale-110 active:scale-95 border border-cyber-neonCyan" style="top: 50%; left: 12px; transform: translateY(-50%); pointer-events: auto; display: none; touch-action: none; user-select: none; -webkit-user-select: none;" title="Drag anywhere or tap to Open Prediction Hack">
-        <img src="logo.png" class="dynamic-brand-logo" alt="Logo" class="w-full h-full object-cover rounded-xl pointer-events-none">
+        <img src="/assets/logo.png" class="dynamic-brand-logo" alt="Logo" class="w-full h-full object-cover rounded-xl pointer-events-none">
     </div>
 
     <!-- 🔮 COMPACT FLOATING PREDICTION PANEL (Ultra-Sleek Mobile Size) -->
@@ -242,7 +242,7 @@
 
                 <!-- Floating Logo Inside the Sacred Core -->
                 <div class="relative z-10 w-22 h-22 rounded-2xl overflow-hidden brand-logo-ring bg-[#06090f] p-1 shadow-[0_0_40px_rgba(0,229,255,0.85)] border border-cyber-neonCyan/40" style="width: 78px; height: 78px;">
-                    <img src="logo.png" class="dynamic-brand-logo" alt="AMBIKA HACK Logo" class="dynamic-brand-logo w-full h-full object-cover rounded-xl">
+                    <img src="/assets/logo.png" class="dynamic-brand-logo" alt="AMBIKA HACK Logo" class="dynamic-brand-logo w-full h-full object-cover rounded-xl">
                 </div>
             </div>
 
@@ -284,7 +284,7 @@
             <!-- BRAND LOGO & TITLE -->
             <div class="flex items-center gap-3">
                 <div id="headerLogoBtn" onclick="onLogoClick()" class="relative z-10 w-12 h-12 rounded-2xl overflow-hidden brand-logo-ring bg-[#06090f] p-0.5 flex items-center justify-center shrink-0 shadow-[0_0_25px_rgba(0,240,255,0.7)] cursor-pointer transition-transform hover:scale-110 active:scale-95" style="width: 48px; height: 48px; min-width: 48px; max-width: 48px; min-height: 48px; max-height: 48px;" title="Open Hack Panel">
-                    <img src="logo.png" class="dynamic-brand-logo" alt="AMBIKA HACK Logo" class="w-full h-full object-cover rounded-xl" style="width: 100%; height: 100%; object-fit: cover;">
+                    <img src="/assets/logo.png" class="dynamic-brand-logo" alt="AMBIKA HACK Logo" class="w-full h-full object-cover rounded-xl" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
                 <div>
                     <h1 class="font-orbitron font-black text-xl sm:text-2xl text-white tracking-wider flex items-center gap-1.5 leading-tight">
@@ -941,7 +941,39 @@
     </div>
 
     <!-- LOAD APP LOGIC -->
-    <script src="js/app.js?v=38.0"></script>
+    <script>
+/* Render-safe boot fallback: runs even if the main client bundle is delayed. */
+(function(){
+  function startRenderBoot(){
+    var overlay=document.getElementById('systemBootOverlay');
+    var bar=document.getElementById('bootProgressBar');
+    var pct=document.getElementById('bootPercentText');
+    var status=document.getElementById('bootStatusText');
+    if(!overlay || overlay.dataset.bootStarted==='1') return;
+    overlay.dataset.bootStarted='1';
+    var p=0;
+    var timer=setInterval(function(){
+      p=Math.min(100,p+5);
+      if(bar) bar.style.width=p+'%';
+      if(pct) pct.textContent=p+'%';
+      if(status){
+        if(p<35) status.textContent='INITIALIZING SACRED CORE...';
+        else if(p<70) status.textContent='ALIGNING SACRED CHAKRA MATRIX...';
+        else if(p<100) status.textContent='CALIBRATING QUANTUM ENGINE...';
+        else status.textContent='SACRED ENGINE READY [100%]';
+      }
+      if(p>=100){
+        clearInterval(timer);
+        setTimeout(function(){ overlay.style.opacity='0'; overlay.style.pointerEvents='none'; setTimeout(function(){ if(overlay.parentNode) overlay.remove(); },500); },250);
+      }
+    },100);
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',startRenderBoot,{once:true});
+  else startRenderBoot();
+  window.__startRenderBoot=startRenderBoot;
+})();
+</script>
+<script src="/js/app.js?v=99.0"></script>
 </body>
 
 </html>
