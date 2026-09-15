@@ -674,7 +674,7 @@ async function submitModalUid() {
         termLogs.innerHTML = `
             <div class="text-gray-400">> [INIT] Target UID Locked: <span class="text-white font-bold">#${uid}</span> [HWID: ${currentHwid.substring(0,8)}...]</div>
             <div class="text-cyber-neonCyan">> [CIPHER] Injecting 256-bit quantum tunnel payload... [OK]</div>
-            <div class="text-amber-300 animate-pulse">> [SCAN] Interrogating ShreeWin VIP neural database cluster...</div>
+            <div class="text-amber-300 animate-pulse">> [SCAN] Interrogating VEERGAME VIP neural database cluster...</div>
         `;
     }
 
@@ -745,7 +745,7 @@ async function submitModalUid() {
                             <span>PLAN: <strong class="text-white">${apiRes.plan || 'PERMANENT VIP'}</strong></span>
                             <span class="text-emerald-400 font-bold">● ACTIVE</span>
                         </div>
-                        <div class="text-[11px] font-mono text-cyber-neonCyan animate-pulse">Launching ShreeWin & Floating Hack Panel in 2s...</div>
+                        <div class="text-[11px] font-mono text-cyber-neonCyan animate-pulse">Launching VEERGAME & Floating Hack Panel in 2s...</div>
                     </div>
                 `;
             }
@@ -759,7 +759,7 @@ async function submitModalUid() {
             setTimeout(() => {
                 closeUnlockModal();
                 applyUnlockedState();
-                showToast(`⚡ ShreeWin loaded! Tap logo to open/close hack panel.`);
+                showToast(`⚡ VEERGAME loaded! Tap logo to open/close hack panel.`);
             }, 1800);
             return;
 
@@ -1327,7 +1327,7 @@ function runAnalysis() {
     document.getElementById('loader').classList.remove('hidden');
 
     const logOutput = document.getElementById('matrixLogOutput');
-    if (logOutput) logOutput.innerHTML = '<div>> [0.01ms] HOOKING MSD QUANTUM ENGINE...</div>';
+    if (logOutput) logOutput.innerHTML = '<div>> [0.01ms] HOOKING AMBIKA QUANTUM ENGINE...</div>';
 
     const scrambleSizeEl = document.getElementById('scrambleSize');
     const scrambleNumEl = document.getElementById('scrambleNum');
@@ -1452,7 +1452,7 @@ function initBootSplash() {
     let width = canvas.width = window.innerWidth;
     let height = canvas.height = window.innerHeight;
 
-    const chars = '0123456789ABCDEF!@#$%&*MSDTC';
+    const chars = '0123456789ABCDEF!@#$%&*AMBICATC';
     const fontSize = 14;
     const columns = Math.floor(width / fontSize);
     const drops = Array(columns).fill(1);
