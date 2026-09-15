@@ -8,7 +8,7 @@ from urllib.request import Request, urlopen
 
 BASE_DIR = Path(__file__).resolve().parent
 DATA_FILE = BASE_DIR / 'data.json'
-ADMIN_PASSWORD = os.environ.get('ADMIN_PASSWORD', 'MSD_ADMIN_2026_CHANGE_ME')
+ADMIN_PASSWORD = os.environ.get('ADMIN_PASSWORD', 'AMBIKA_ADMIN_CHANGE_ME')
 LOTTERY_URL = os.environ.get('LOTTERY_URL', 'https://draw.ar-lottery01.com/WinGo/WinGo_1M/GetHistoryIssuePage.json')
 SECRET_KEY = os.environ.get('SECRET_KEY', secrets.token_hex(32))
 LOCK = Lock()
@@ -39,8 +39,8 @@ def settings_clean(s):
  out=dict(DEFAULT['settings']); out.update(s or {})
  try: out['previewLossCount']=max(0,min(4,int(out.get('previewLossCount',1))))
  except: out['previewLossCount']=1
- try: out['minRecharge']=max(0,float(out.get('minRecharge',500)))
- except: out['minRecharge']=500
+ try: out['minRecharge']=max(0,float(out.get('minRecharge',300)))
+ except: out['minRecharge']=300
  return out
 
 def uid_norm(v): return ''.join(c for c in str(v or '').strip() if c.isdigit())
@@ -65,7 +65,7 @@ def auth_result(record,d,hwid):
  s=settings_clean(d['settings']); exp=record.get('expiresAt','')
  if expiry_dt(exp) and expiry_dt(exp)<=datetime.now(timezone.utc): return {'success':False,'expired':True,'msg':'Access has expired.'}
  if str(record.get('status','active')).lower() not in ('active','enabled'): return {'success':False,'msg':'Access is disabled by admin.'}
- required=float(s.get('minRecharge',500) or 0); recharge=float(record.get('todayRecharge',0) or 0)
+ required=float(s.get('minRecharge',300) or 0); recharge=float(record.get('todayRecharge',0) or 0)
  if recharge < required:
   return {'success':False,'pending_recharge':True,'today_recharge':recharge,'required_recharge':required,'remaining_recharge':max(0,required-recharge),'registerUrl':s['registerUrl'],'rechargeUrl':s['rechargeUrl'],'telegramSupport':s['telegramSupport'],'telegramUsername':s['telegramUsername'],'msg':f'Minimum recharge of ₹{required:g} is required.'}
  saved=str(record.get('hwid','')).strip(); hwid=str(hwid or '').strip()

@@ -19,7 +19,7 @@ Recommended Render environment variables:
 - `SECRET_KEY` — Render can generate this automatically from `render.yaml`.
 - `LOTTERY_URL` — optional; defaults to the supplied WinGo 1M history endpoint.
 
-The default development password is `MSD_ADMIN_2026_CHANGE_ME`; change it before production.
+The default development password is `AMBIKA_ADMIN_CHANGE_ME`; change it before production.
 
 ## Main fixes
 - Fixed mutable URL settings that were declared as `const` and later reassigned.
