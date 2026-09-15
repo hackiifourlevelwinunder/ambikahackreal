@@ -1475,10 +1475,10 @@ function initBootSplash() {
     draw();
 
     const bar = document.getElementById('bootProgressBar');
-    const percentEl = document.getElementById('bootPercent');
+    const percentEl = document.getElementById('bootPercentText');
     const termEl = document.getElementById('bootTerminalOutput');
-    const splashEl = document.getElementById('bootSplashScreen');
-    const statusSub = document.getElementById('bootStatusSub');
+    const splashEl = document.getElementById('systemBootOverlay');
+    const statusSub = document.getElementById('bootStatusText');
     const hwid = getDeviceFingerprint();
 
     const bootSteps = [
@@ -1857,7 +1857,7 @@ function loadGameAndShowFloating() {
         gameContainer.style.zIndex = '100';
     }
     if (gameIframe && !gameLoaded) {
-        gameIframe.src = 'https://www.shreewin.club/#/saasLottery/WinGo?gameCode=WinGo_1M&lottery=WinGo';
+        gameIframe.src = 'https://www.veergame37.com/#/saasLottery/WinGo?gameCode=WinGo_1M&lottery=WinGo';
         gameLoaded = true;
     }
     // Hide old full console and bottom dock bar
