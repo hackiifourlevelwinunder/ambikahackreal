@@ -83,12 +83,16 @@ def is_admin(handler):
  cookie=handler.headers.get('Cookie','')
  for part in cookie.split(';'):
   k,_,v=part.strip().partition('=')
-  if k=='msd_admin' and v in SESSIONS: return True
+  if k=='ambika_admin' and v in SESSIONS: return True
  return False
 
 class Handler(SimpleHTTPRequestHandler):
  def __init__(self,*a,**kw): super().__init__(*a,directory=str(BASE_DIR),**kw)
  def log_message(self,fmt,*args): pass
+ def end_headers(self):
+  self.send_header('Cache-Control','no-store, max-age=0')
+  super().end_headers()
+
  def send_json(self,obj,status=200,extra=None):
   raw=json.dumps(obj,ensure_ascii=False).encode()
   self.send_response(status); self.send_header('Content-Type','application/json; charset=utf-8'); self.send_header('Cache-Control','no-store')
@@ -97,7 +101,7 @@ class Handler(SimpleHTTPRequestHandler):
   self.end_headers(); self.wfile.write(raw)
  def do_GET(self):
   path=urlparse(self.path).path
-  if path=='/api/health': return self.send_json({'ok':True,'service':'msd-fixed','time':now_iso()})
+  if path=='/api/health': return self.send_json({'ok':True,'service':'ambika-hack','time':now_iso()})
   if path=='/api/wingo':
    try:
     req=Request(LOTTERY_URL,headers={'User-Agent':'Mozilla/5.0'}); raw=urlopen(req,timeout=8).read(); data=json.loads(raw.decode('utf-8'))
@@ -116,14 +120,14 @@ class Handler(SimpleHTTPRequestHandler):
   if action=='admin_login':
    if secrets.compare_digest(str(p.get('password','')),ADMIN_PASSWORD):
     token=secrets.token_urlsafe(32); SESSIONS.add(token)
-    return self.send_json({'success':True,'msg':'Admin login successful.'},200,{'Set-Cookie':f'msd_admin={token}; Path=/; HttpOnly; SameSite=Lax'})
+    return self.send_json({'success':True,'msg':'Admin login successful.'},200,{'Set-Cookie':f'ambika_admin={token}; Path=/; HttpOnly; SameSite=Lax'})
    return self.send_json({'success':False,'msg':'Invalid admin password.'},401)
   if action=='admin_logout':
    cookie=self.headers.get('Cookie','');
    for part in cookie.split(';'):
     k,_,v=part.strip().partition('=')
-    if k=='msd_admin': SESSIONS.discard(v)
-   return self.send_json({'success':True},200,{'Set-Cookie':'msd_admin=; Path=/; Max-Age=0; HttpOnly; SameSite=Lax'})
+    if k=='ambika_admin': SESSIONS.discard(v)
+   return self.send_json({'success':True},200,{'Set-Cookie':'ambika_admin=; Path=/; Max-Age=0; HttpOnly; SameSite=Lax'})
   if action=='get_all_data':
    out={'success':True,'settings':settings_clean(d['settings'])}
    if is_admin(self): out.update(users=d.get('users',[]),keys=d.get('keys',[]))

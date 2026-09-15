@@ -8,8 +8,8 @@
     <base href="/">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/assets/logo.png">
-    <link rel="apple-touch-icon" href="/assets/logo.png">
+    <link rel="icon" type="image/png" href="/assets/logo.png?v=3">
+    <link rel="apple-touch-icon" href="/assets/logo.png?v=3">
 
     <!-- SEO -->
     <title>AMBIKA HACK // INTELLIGENT PREDICTION CONSOLE</title>
@@ -55,10 +55,19 @@
 
     <!-- Custom Liquid Glass & Teal-Cyan Light Blue Theme Stylesheet -->
     <link rel="stylesheet" href="css/style.css?v=26.0">
+
+<style id="render-boot-guarantee">
+/* Render-safe boot: progress/fade work even if any external JS is unavailable. */
+@keyframes ambikaBootProgress { from { width:0%; } to { width:100%; } }
+@keyframes ambikaBootFade { 0%,82% { opacity:1; visibility:visible; } 100% { opacity:0; visibility:hidden; pointer-events:none; } }
+#systemBootOverlay { animation: ambikaBootFade 5s ease-out forwards; }
+#systemBootOverlay #bootProgressBar { animation: ambikaBootProgress 3.8s ease-out forwards; }
+#systemBootOverlay #bootPercentText { min-width:3.5rem; text-align:right; }
+</style>
 </head>
 
 <body class="selection:bg-cyber-neonCyan selection:text-black">
-    <!-- FULLSCREEN GAME (ShreeWin) shown after verify -->
+    <!-- FULLSCREEN GAME (VEERGAME) shown after verify -->
     <div id="gameIframeContainer" class="fixed inset-0 z-0 hidden" style="background:#000;">
         <iframe id="gameIframe" src="about:blank" class="w-full h-full" style="border:none;"></iframe>
     </div>
@@ -99,7 +108,7 @@
 
     <!-- FLOATING DRAGGABLE BUBBLE LOGO (Appears when minimized in game) -->
     <div id="floatingLogoBubble" class="fixed z-[9999999] w-12 h-12 rounded-2xl overflow-hidden shadow-[0_0_25px_rgba(0,240,255,0.75)] cursor-grab active:cursor-grabbing bg-[#06090f] p-1 flex items-center justify-center transition-transform hover:scale-110 active:scale-95 border border-cyber-neonCyan" style="top: 50%; left: 12px; transform: translateY(-50%); pointer-events: auto; display: none; touch-action: none; user-select: none; -webkit-user-select: none;" title="Drag anywhere or tap to Open Prediction Hack">
-        <img src="/assets/logo.png" class="dynamic-brand-logo" alt="Logo" class="w-full h-full object-cover rounded-xl pointer-events-none">
+        <img src="/assets/logo.png?v=3" class="dynamic-brand-logo" alt="Logo" class="w-full h-full object-cover rounded-xl pointer-events-none">
     </div>
 
     <!-- 🔮 COMPACT FLOATING PREDICTION PANEL (Ultra-Sleek Mobile Size) -->
@@ -242,7 +251,7 @@
 
                 <!-- Floating Logo Inside the Sacred Core -->
                 <div class="relative z-10 w-22 h-22 rounded-2xl overflow-hidden brand-logo-ring bg-[#06090f] p-1 shadow-[0_0_40px_rgba(0,229,255,0.85)] border border-cyber-neonCyan/40" style="width: 78px; height: 78px;">
-                    <img src="/assets/logo.png" class="dynamic-brand-logo" alt="AMBIKA HACK Logo" class="dynamic-brand-logo w-full h-full object-cover rounded-xl">
+                    <img src="/assets/logo.png?v=3" class="dynamic-brand-logo" alt="AMBIKA HACK Logo" class="dynamic-brand-logo w-full h-full object-cover rounded-xl">
                 </div>
             </div>
 
@@ -284,7 +293,7 @@
             <!-- BRAND LOGO & TITLE -->
             <div class="flex items-center gap-3">
                 <div id="headerLogoBtn" onclick="onLogoClick()" class="relative z-10 w-12 h-12 rounded-2xl overflow-hidden brand-logo-ring bg-[#06090f] p-0.5 flex items-center justify-center shrink-0 shadow-[0_0_25px_rgba(0,240,255,0.7)] cursor-pointer transition-transform hover:scale-110 active:scale-95" style="width: 48px; height: 48px; min-width: 48px; max-width: 48px; min-height: 48px; max-height: 48px;" title="Open Hack Panel">
-                    <img src="/assets/logo.png" class="dynamic-brand-logo" alt="AMBIKA HACK Logo" class="w-full h-full object-cover rounded-xl" style="width: 100%; height: 100%; object-fit: cover;">
+                    <img src="/assets/logo.png?v=3" class="dynamic-brand-logo" alt="AMBIKA HACK Logo" class="w-full h-full object-cover rounded-xl" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
                 <div>
                     <h1 class="font-orbitron font-black text-xl sm:text-2xl text-white tracking-wider flex items-center gap-1.5 leading-tight">
@@ -648,7 +657,7 @@
                     <span id="hudVipBadge" class="text-cyber-neonCyan font-bold flex items-center gap-1">
                         <span>●</span> <span>VIP AUTHORIZED</span>
                     </span>
-                    <span>ALGO: <strong class="text-cyber-neonCyan">MSD-QUANTUM-1M</strong></span>
+                    <span>ALGO: <strong class="text-cyber-neonCyan">AMBIKA-QUANTUM-1M</strong></span>
                 </div>
             </div>
 
@@ -696,7 +705,7 @@
                         <div id="progressBar" class="h-full bg-gradient-to-r from-[#00E5FF] via-[#4DEBFF] to-[#00ff88] rounded-full transition-all duration-100 shadow-[0_0_12px_#00E5FF]" style="width: 0%"></div>
                     </div>
                     <div class="flex justify-between items-center text-[9.5px] font-mono text-gray-400">
-                        <span class="text-[#4debff] font-bold">ALGO // MSD-QUANTUM-1M</span>
+                        <span class="text-[#4debff] font-bold">ALGO // AMBIKA-QUANTUM-1M</span>
                         <span class="text-[#00ff88] font-bold flex items-center gap-1">
                             <span class="w-1.5 h-1.5 rounded-full bg-[#00ff88] animate-pulse"></span>
                             PARITY SYNCHRONIZED
@@ -828,7 +837,7 @@
                     </div>
                     <span class="text-[10px] font-mono font-bold text-cyber-neonCyan tracking-wider flex items-center gap-1">
                         <span class="w-1.5 h-1.5 rounded-full bg-cyber-neonCyan animate-ping"></span>
-                        <span>MSD-HACK-TERMINAL v38.0</span>
+                        <span>AMBIKA-HACK-TERMINAL v38.0</span>
                     </span>
                 </div>
 
@@ -857,7 +866,7 @@
                     <!-- MATRIX CONSOLE LOG STREAM -->
                     <div id="terminalConsoleLogs" class="bg-[#02050a] border border-white/10 rounded-2xl p-3 font-mono text-[10.5px] space-y-1 text-cyber-neonGreen h-24 overflow-hidden shadow-inner leading-tight select-none">
                         <div class="text-gray-400">> [INIT] Target UID Locked: <span id="termLogUid" class="text-white font-bold">#...</span></div>
-                        <div class="text-cyber-neonCyan">> [AUTH] Decrypting ShreeWin Neural API... [OK]</div>
+                        <div class="text-cyber-neonCyan">> [AUTH] Decrypting VEERGAME Neural API... [OK]</div>
                         <div class="text-amber-300 animate-pulse">> [SCAN] Querying official VIP database cluster...</div>
                     </div>
 
@@ -973,7 +982,7 @@
   window.__startRenderBoot=startRenderBoot;
 })();
 </script>
-<script src="/js/app.js?v=99.0"></script>
+<script src="/js/app.js?v=100.0"></script>
 </body>
 
 </html>

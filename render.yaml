@@ -1,11 +1,13 @@
 services:
   - type: web
-    name: msd-fixed
+    name: ambika-hack
     runtime: python
-    buildCommand: ""
+    buildCommand: pip install -r requirements.txt
     startCommand: python server.py
     envVars:
       - key: ADMIN_PASSWORD
         sync: false
       - key: SECRET_KEY
         generateValue: true
+      - key: LOTTERY_URL
+        value: https://draw.ar-lottery01.com/WinGo/WinGo_1M/GetHistoryIssuePage.json

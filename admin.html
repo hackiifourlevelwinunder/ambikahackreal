@@ -2,7 +2,7 @@
 <html lang="en" class="dark">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>MSD ADMIN // CONTROL PANEL</title>
+<title>AMBIKA ADMIN // CONTROL PANEL</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <script>tailwind.config={darkMode:'class',theme:{extend:{colors:{cyber:{bg:'#050811',cyan:'#00e5ff',green:'#00ff88',pink:'#ff007f',gold:'#ffd700'}}}}}</script>
 <style>
@@ -15,12 +15,12 @@ input,select,textarea{background:#070d16!important;border:1px solid rgba(255,255
 </head>
 <body>
 <div id="login" class="min-h-screen flex items-center justify-center p-5"><div class="glass w-full max-w-sm p-6">
-  <div class="text-center mb-6"><div class="text-cyan-300 font-black tracking-[.2em] text-xs">MSD ADMIN</div><h1 class="text-2xl font-black mt-2">CONTROL PANEL</h1><p class="muted text-xs mt-2">Server-side access required</p></div>
+  <div class="text-center mb-6"><div class="text-cyan-300 font-black tracking-[.2em] text-xs">AMBIKA ADMIN</div><h1 class="text-2xl font-black mt-2">CONTROL PANEL</h1><p class="muted text-xs mt-2">Server-side access required</p></div>
   <form id="loginForm" class="space-y-3"><input id="password" type="password" placeholder="Admin password" autocomplete="current-password"><button class="btn primary w-full">LOGIN</button><div id="loginMsg" class="text-xs text-rose-300"></div></form>
 </div></div>
 
 <div id="app" class="hidden max-w-7xl mx-auto p-4 md:p-7">
-<header class="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-6"><div><div class="text-cyan-300 text-xs font-black tracking-[.22em]">MSD ADMIN // LIVE</div><h1 class="text-3xl font-black mt-1">Control Center</h1><p class="muted text-sm">UIDs, VIP keys, broadcast and client settings</p></div><button id="logout" class="btn danger">Logout</button></header>
+<header class="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-6"><div><div class="text-cyan-300 text-xs font-black tracking-[.22em]">AMBIKA ADMIN // LIVE</div><h1 class="text-3xl font-black mt-1">Control Center</h1><p class="muted text-sm">UIDs, VIP keys, broadcast and client settings</p></div><button id="logout" class="btn danger">Logout</button></header>
 <div id="toast" class="hidden fixed top-4 right-4 z-50 glass px-4 py-3 text-sm"></div>
 
 <section class="grid md:grid-cols-4 gap-3 mb-5"><div class="glass p-4"><div class="muted text-xs">UIDS</div><div id="statUsers" class="text-2xl font-black mt-1">0</div></div><div class="glass p-4"><div class="muted text-xs">VIP KEYS</div><div id="statKeys" class="text-2xl font-black mt-1">0</div></div><div class="glass p-4"><div class="muted text-xs">ACTIVE UIDS</div><div id="statActive" class="text-2xl font-black mt-1 text-emerald-300">0</div></div><div class="glass p-4"><div class="muted text-xs">MIN RECHARGE</div><div id="statRecharge" class="text-2xl font-black mt-1 text-cyan-300">₹300</div></div></section>
