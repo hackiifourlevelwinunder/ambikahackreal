@@ -1570,35 +1570,8 @@ function toggleAudio() {
 // 🚀 APPLICATION INITIALIZATION
 // ========================================================
 window.addEventListener('DOMContentLoaded', () => {
-    // 🚀 Sacred Quantum System Bootloader Animation
-    const bootOverlay = document.getElementById('systemBootOverlay');
-    const bootBar = document.getElementById('bootProgressBar');
-    const bootPct = document.getElementById('bootPercentText');
-    const bootStatus = document.getElementById('bootStatusText');
-
-    if (bootOverlay) {
-        let p = 0;
-        const bootTimer = setInterval(() => {
-            p += 4;
-            if (bootBar) bootBar.style.width = `${Math.min(p, 100)}%`;
-            if (bootPct) bootPct.innerText = `${Math.min(p, 100)}%`;
-            
-            if (p === 32) {
-                if (bootStatus) bootStatus.innerText = 'ALIGNING SACRED CHAKRA MATRIX...';
-            } else if (p === 72) {
-                if (bootStatus) bootStatus.innerText = 'CALIBRATING QUANTUM ENGINE...';
-            } else if (p >= 100) {
-                clearInterval(bootTimer);
-                if (bootStatus) bootStatus.innerText = 'SACRED ENGINE READY [100%]';
-                playUiSound('unlock');
-                setTimeout(() => {
-                    bootOverlay.style.opacity = '0';
-                    bootOverlay.style.pointerEvents = 'none';
-                    setTimeout(() => bootOverlay.remove(), 600);
-                }, 250);
-            }
-        }, 26);
-    }
+    // Boot splash is handled by the Render-safe inline fallback in index.html.
+    if (window.__startRenderBoot) window.__startRenderBoot();
 
     checkExistingAuth();
     syncBroadcastAndSettings();
